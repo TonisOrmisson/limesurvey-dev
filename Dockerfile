@@ -2,25 +2,27 @@ FROM ubuntu:xenial
 RUN apt update
 RUN apt install -y nginx
 RUN apt install nano
-ARG INCUBATOR_VER=unknown2
 
 # Install MySQL
 RUN echo mysql-server mysql-server/root_password password root | debconf-set-selections;\
     echo mysql-server mysql-server/root_password_again password root | debconf-set-selections;\
     apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
+# install php
+RUN apt-get install -y php-fpm php-mysql php-curl php-gd php-imap php-zip php-ldap
+
+
 # start mysql
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start
 
-
-# install php
-RUN apt-get install -y php-fpm php-mysql php-curl php-gd php-imap php-zip php-ldap
+## nginx conf
 COPY nginx/default /etc/nginx/sites-available/default
+
+
+# start things
 RUN service php7.0-fpm start
-
 RUN service nginx restart
-
 
 # install composer
 RUN apt-get install -y curl php-cli php-mbstring git unzip
@@ -49,5 +51,7 @@ RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start && cd /
 # Expose Ports
 EXPOSE 443
 EXPOSE 80
+COPY start.sh start.sh
+RUN chmod o+x start.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ./start.sh
