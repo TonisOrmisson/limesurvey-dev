@@ -53,6 +53,6 @@ RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start && cd /
 EXPOSE 443
 EXPOSE 80
 COPY start.sh start.sh
-RUN chmod o+x start.sh
+RUN chmod a+x start.sh
 
 CMD ./start.sh
