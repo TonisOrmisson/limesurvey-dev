@@ -48,6 +48,13 @@ RUN cd /var/www/html/ && sed -i "s/'password' => ''/'password' => 'root'/"  appl
 RUN cd /var/www/html/ && sed -i "s/'debug'=>0/'debug'=>2/"  application/config/config.php
 RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start && cd /var/www/html/ && php application/commands/console.php install admin password TravisLS no@email.com verbose
 
+# install phpunit
+RUN apt-get install -y wget
+RUN wget https://phar.phpunit.de/phpunit-6.5.phar
+RUN chmod +x phpunit-6.5.phar
+RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
+RUN phpunit --version
+
 
 # Expose Ports
 EXPOSE 443
