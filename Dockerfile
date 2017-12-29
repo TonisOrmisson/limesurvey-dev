@@ -56,7 +56,7 @@ RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
 # install firefox for tests
-RUN apt-get -y --force-yes install firefox
+RUN apt-get -y --force-yes install nodejs firefox
 RUN firefox -v
 
 # Setup Selenium with Firefox headless mode.
