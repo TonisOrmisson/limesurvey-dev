@@ -62,9 +62,10 @@ RUN firefox -v
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # get selenium for testing
-RUN  wget "https://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar"
-RUN  wget "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz"
-RUN  tar xvzf geckodriver-v0.19.1-linux64.tar.gz
+RUN wget "https://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar"
+RUN wget "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz"
+RUN tar xvzf geckodriver-v0.19.1-linux64.tar.gz
+RUN apt-get install -y default-jre
 
 # Expose Ports
 EXPOSE 443
