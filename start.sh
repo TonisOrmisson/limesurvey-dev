@@ -18,6 +18,14 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 
+# Start selenium
+echo "Starting Selenium ... "
+export MOZ_HEADLESS=1 && java -jar selenium-server-standalone-3.7.1.jar -enablePassThrough false > /dev/null 2> /dev/null &
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start Selenium: $status"
+  exit $status
+fi
 
 # Start nginx
 echo "Starting nginx .... "
