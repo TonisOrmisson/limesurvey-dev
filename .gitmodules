@@ -1,0 +1,3 @@
+[submodule "limesurvey"]
+	path = html
+	url = https://github.com/LimeSurvey/LimeSurvey
