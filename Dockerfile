@@ -55,6 +55,16 @@ RUN chmod +x phpunit-6.5.phar
 RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
+# install firefox for tests
+RUN apt-get -y --force-yes install firefox
+RUN firefox -v
+
+# Setup Selenium with Firefox headless mode.
+RUN  wget "https://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar"
+RUN  wget "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz"
+RUN  tar xvzf geckodriver-v0.19.1-linux64.tar.gz
+RUN  export MOZ_HEADLESS=1
+RUN  java -jar selenium-server-standalone-3.7.1.jar -enablePassThrough false > /dev/null 2> /dev/null &
 
 # Expose Ports
 EXPOSE 443
