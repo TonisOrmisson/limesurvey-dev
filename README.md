@@ -9,6 +9,7 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 - nginx
 - php 7.0
 - mysql 5.7
+- version tag matches LS version
 
 The image includes a a mysql server with the user:root password:root.
 And the test-installation of limeSurvey with the user:admin password:password similar to the LimeSurvey original Travis testing set-up.
