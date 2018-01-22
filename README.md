@@ -10,6 +10,7 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 - php 7.0
 - mysql 5.7
 - version tag matches LS version
+- nginx does not cache files (css/js development)
 
 The image includes a a mysql server with the user:root password:root.
 And the test-installation of limeSurvey with the user:admin password:password similar to the LimeSurvey original Travis testing set-up.
@@ -32,7 +33,12 @@ $ DOMAIN=localhost phpunit
 
 ## Run image
 
+With the included LS code
 ```
 docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev-xenial
 ```
 
+use a local LS code
+```
+docker run --name my-lime -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial
+```
