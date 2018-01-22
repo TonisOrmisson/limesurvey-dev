@@ -39,7 +39,6 @@ ADD html/ /var/www/html/
 # set lime permissions
 RUN cd /var/www/html/ && chmod -R 777 tmp
 RUN cd /var/www/html/ && chmod -R 777 upload
-RUN cd /var/www/html/ && mkdir tests/tmp/runtime
 RUN cd /var/www/html/ && chmod -R 777 tests/tmp
 
 # install Limesurvey
