@@ -72,6 +72,7 @@ RUN apt-get install -y default-jre
 # Expose Ports
 EXPOSE 443
 EXPOSE 80
+EXPOSE 3306
 COPY start.sh start.sh
 RUN chmod a+x start.sh
 
