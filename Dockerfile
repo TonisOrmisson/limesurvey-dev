@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-RUN apt update
+RUN apt update --fix-missing
 RUN apt install -y nginx
 RUN apt install nano
 
@@ -46,17 +46,20 @@ RUN cd /var/www/html/ && composer install
 RUN cd /var/www/html/ && cp application/config/config-sample-mysql.php application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'password' => ''/'password' => 'root'/"  application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'debug'=>0/'debug'=>2/"  application/config/config.php
-RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start && cd /var/www/html/ && php application/commands/console.php install admin password TravisLS no@email.com verbose
+## enable json RPC
+RUN cd /var/www/html/ && sed -i "/Update default LimeSurvey config here/a \ \ \ \ \ \ \ \ 'RPCInterface' => 'json'," application/config/config.php
+RUN service mysql start && cd /var/www/html/ && php application/commands/console.php install admin password TravisLS no@email.com verbose
 
 # install phpunit
 RUN apt-get install -y wget
+
 RUN wget https://phar.phpunit.de/phpunit-6.5.phar
 RUN chmod +x phpunit-6.5.phar
 RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
 # install firefox for tests
-RUN apt-get -y install nodejs firefox
+RUN apt-get -y install  --fix-missing nodejs firefox
 RUN firefox -v
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
