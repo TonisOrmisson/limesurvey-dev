@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-RUN apt update --fix-missing
+RUN apt update
 RUN apt install -y nginx
 RUN apt install nano
 
@@ -59,7 +59,7 @@ RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
 # install firefox for tests
-RUN apt-get -y install  --fix-missing nodejs firefox
+RUN apt-get -y install  nodejs firefox
 RUN firefox -v
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
