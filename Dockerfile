@@ -47,8 +47,11 @@ RUN cd /var/www/html/ && cp application/config/config-sample-mysql.php applicati
 RUN cd /var/www/html/ && sed -i "s/'password' => ''/'password' => 'root'/"  application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'debug'=>0/'debug'=>2/"  application/config/config.php
 ## enable json RPC
-RUN cd /var/www/html/ && sed -i "/Update default LimeSurvey config here/a \ \ \ \ \ \ \ \ 'RPCInterface' => 'json'," application/config/config.php
+RUN cd /var/www/html/ && sed -i "/Update default LimeSurvey config here/a \ \ \ \ \ \ \ \ 'RPCInterface' => 'json', " application/config/config.php
 RUN service mysql start && cd /var/www/html/ && php application/commands/console.php install admin password TravisLS no@email.com verbose
+
+## allow mysql user connections from any host
+RUN service mysql start && mysql -uroot -proot mysql  -e "update user set host='%' where user='root' and host='localhost';"
 
 # install phpunit
 RUN apt-get install -y wget
@@ -68,6 +71,7 @@ RUN wget "https://selenium-release.storage.googleapis.com/3.7/selenium-server-st
 RUN wget "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz"
 RUN tar xvzf geckodriver-v0.19.1-linux64.tar.gz
 RUN apt-get install -y default-jre
+
 
 # Expose Ports
 EXPOSE 443
