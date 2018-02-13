@@ -20,7 +20,7 @@ fi
 
 # Start selenium
 echo "Starting Selenium ... "
-export MOZ_HEADLESS=1 && java -jar selenium-server-standalone-3.7.1.jar -enablePassThrough false > /dev/null 2> /dev/null &
+export MOZ_HEADLESS=1 && java -jar selenium-server-standalone-*.jar -enablePassThrough false  > /var/log/selenium.log 2> /var/log/selenium_error.log &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start Selenium: $status"

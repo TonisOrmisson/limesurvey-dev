@@ -1,5 +1,6 @@
 FROM ubuntu:xenial
-RUN apt update
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt update && apt-get install -y --no-install-recommends apt-utils
 RUN apt install -y nginx
 RUN apt install nano
 
@@ -10,7 +11,7 @@ RUN echo mysql-server mysql-server/root_password password root | debconf-set-sel
 
 
 # install php
-RUN apt-get install -y php-fpm php-mysql php-curl php-gd php-imap php-zip php-ldap php-xml
+RUN apt install -y php-fpm php-mysql php-curl php-gd php-imap php-zip php-ldap php-xml
 
 
 # start mysql
@@ -26,7 +27,7 @@ RUN service php7.0-fpm start
 RUN service nginx restart
 
 # install composer
-RUN apt-get install -y curl php-cli php-mbstring git unzip
+RUN apt install -y curl php-cli php-mbstring git unzip
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN composer
@@ -54,15 +55,18 @@ RUN service mysql start && cd /var/www/html/ && php application/commands/console
 RUN service mysql start && mysql -uroot -proot mysql  -e "update user set host='%' where user='root' and host='localhost';"
 
 # install phpunit
-RUN apt-get install -y wget
+RUN apt install -y wget
 
 RUN wget https://phar.phpunit.de/phpunit-6.5.phar
 RUN chmod +x phpunit-6.5.phar
 RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
+# install net tools (netstat etc)
+RUN apt install -y net-tools
+
 # install firefox for tests
-RUN apt-get -y install  nodejs firefox
+RUN apt -y install  nodejs firefox
 RUN firefox -v
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
@@ -70,7 +74,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 RUN wget "https://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar"
 RUN wget "https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz"
 RUN tar xvzf geckodriver-v0.19.1-linux64.tar.gz
-RUN apt-get install -y default-jre
+RUN apt install -y default-jre
 
 
 # Expose Ports
@@ -81,3 +85,4 @@ COPY start.sh start.sh
 RUN chmod a+x start.sh
 
 CMD ./start.sh
+ENV DEBIAN_FRONTEND teletype
