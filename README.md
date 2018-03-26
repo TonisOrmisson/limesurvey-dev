@@ -40,5 +40,5 @@ docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev-xenial
 
 use a local LS code
 ```
-docker run --name my-lime -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial
+docker run --name my-lime --net my-net -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial
 ```
