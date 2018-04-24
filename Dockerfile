@@ -10,12 +10,11 @@ RUN echo mysql-server mysql-server/root_password password root | debconf-set-sel
     apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
 # install php5 repo
-RUN apt-get install -y software-properties-common python-software-properties
-RUN add-apt-repository ppa:ondrej/php
-RUN apt-get update
+RUN apt update && apt install -y software-properties-common python-software-properties
+RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
 # install php
-RUN apt install -y php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-imap php5.6-zip php5.6-ldap php5.6-xml
+RUN apt update && apt install -y php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-imap php5.6-zip php5.6-ldap php5.6-xml
 
 
 # start mysql
@@ -31,7 +30,7 @@ RUN service php5.6-fpm start
 RUN service nginx restart
 
 # install composer
-RUN apt install -y curl php-cli php-mbstring git unzip
+RUN apt install -y curl php5.6-cli php5.6-mbstring git unzip
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN composer
@@ -61,9 +60,9 @@ RUN service mysql start && mysql -uroot -proot mysql  -e "update user set host='
 # install phpunit
 RUN apt install -y wget
 
-RUN wget https://phar.phpunit.de/phpunit-6.5.phar
+RUN wget https://phar.phpunit.de/phpunit-5.0.10.phar
 RUN chmod +x phpunit-6.5.phar
-RUN mv phpunit-6.5.phar /usr/local/bin/phpunit
+RUN mv phpunit-5.0.10.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
 # install net tools (netstat etc)
