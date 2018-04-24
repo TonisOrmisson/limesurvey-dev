@@ -9,9 +9,13 @@ RUN echo mysql-server mysql-server/root_password password root | debconf-set-sel
     echo mysql-server mysql-server/root_password_again password root | debconf-set-selections;\
     apt-get install -y mysql-server mysql-client libmysqlclient-dev
 
+# install php5 repo
+RUN apt-get install -y software-properties-common python-software-properties
+RUN add-apt-repository ppa:ondrej/php
+RUN apt-get update
 
 # install php
-RUN apt install -y php-fpm php-mysql php-curl php-gd php-imap php-zip php-ldap php-xml
+RUN apt install -y php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-imap php5.6-zip php5.6-ldap php5.6-xml
 
 
 # start mysql
@@ -23,7 +27,7 @@ COPY nginx/default /etc/nginx/sites-available/default
 
 
 # start things
-RUN service php7.0-fpm start
+RUN service php5.6-fpm start
 RUN service nginx restart
 
 # install composer
