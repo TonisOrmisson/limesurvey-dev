@@ -61,7 +61,7 @@ RUN service mysql start && mysql -uroot -proot mysql  -e "update user set host='
 RUN apt install -y wget
 
 RUN wget https://phar.phpunit.de/phpunit-5.0.10.phar
-RUN chmod +x phpunit-6.5.phar
+RUN chmod +x phpunit-5.0.10.phar
 RUN mv phpunit-5.0.10.phar /usr/local/bin/phpunit
 RUN phpunit --version
 
