@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Start mysql
 echo "Starting mysql "

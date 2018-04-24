@@ -85,9 +85,8 @@ EXPOSE 443
 EXPOSE 80
 EXPOSE 3306
 COPY start.sh start.sh
-RUN chmod a+x start.sh
+RUN chmod +x start.sh
 
+CMD sh /start.sh
 WORKDIR /var/www/html
-
-CMD ./start.sh
 ENV DEBIAN_FRONTEND teletype
