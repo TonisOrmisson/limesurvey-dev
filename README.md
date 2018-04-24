@@ -7,7 +7,7 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 
 - ubuntu 16.04
 - nginx
-- php 7.0
+- php 5.6
 - mysql 5.7
 - version tag matches LS version
 - nginx does not cache files (css/js development)
@@ -35,10 +35,10 @@ $ DOMAIN=localhost phpunit
 
 With the included LS code
 ```
-docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev-xenial
+docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev-xenial-php5
 ```
 
 use a local LS code
 ```
-docker run --name my-lime --net my-net -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial
+docker run --name my-lime --net my-net -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial-php5
 ```

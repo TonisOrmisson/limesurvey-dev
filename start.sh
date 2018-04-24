@@ -11,7 +11,7 @@ fi
 
 # Start PHP-fpm
 echo "Starting PHP-fpm "
-service php7.0-fpm start
+service php5.6-fpm start
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start PHP-fpm: $status"
