@@ -86,5 +86,5 @@ RUN chmod a+x start.sh
 
 WORKDIR /var/www/html
 
-CMD ./start.sh
+CMD sh /start.sh
 ENV DEBIAN_FRONTEND teletype
