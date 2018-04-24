@@ -1,4 +1,4 @@
 .*
 !.gitmodules
 !.gitignore
-!.idea
+.idea
