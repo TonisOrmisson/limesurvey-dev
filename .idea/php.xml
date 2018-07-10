@@ -42,14 +42,9 @@
       <path value="$PROJECT_DIR$/html/third_party/ace/dev" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-datatable/DataTables-1.10.12" />
       <path value="$PROJECT_DIR$/html/third_party/leaflet/images" />
-      <path value="$PROJECT_DIR$/html/third_party/ckeditor/adapters" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-superfish/css" />
-      <path value="$PROJECT_DIR$/html/third_party/ckeditor/samples" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-superfish/images" />
-      <path value="$PROJECT_DIR$/html/third_party/ckeditor/plugins" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-superfish/js" />
-      <path value="$PROJECT_DIR$/html/third_party/ckeditor/skins" />
-      <path value="$PROJECT_DIR$/html/third_party/ckeditor/lang" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-bindWithDelay/test" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-bindWithDelay/demo" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-multiselect/src" />

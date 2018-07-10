@@ -46,7 +46,7 @@ RUN cd /var/www/html/ && chmod -R 777 tests/tmp
 RUN cd /var/www/html/ && composer install
 RUN cd /var/www/html/ && cp application/config/config-sample-mysql.php application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'password' => ''/'password' => 'root'/"  application/config/config.php
-RUN cd /var/www/html/ && sed -i "s/'debug'=>0/'debug'=>2/"  application/config/config.php
+RUN cd /var/www/html/ && sed -i "s/'debug'=>0/'debug'=>2,'maxLoginAttempt' => 999999999,/"  application/config/config.php
 ## enable json RPC
 RUN cd /var/www/html/ && sed -i "/Update default LimeSurvey config here/a \ \ \ \ \ \ \ \ 'RPCInterface' => 'json', " application/config/config.php
 RUN service mysql start && cd /var/www/html/ && php application/commands/console.php install admin password TravisLS no@email.com verbose
