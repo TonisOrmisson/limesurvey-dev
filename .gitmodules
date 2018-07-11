@@ -1,3 +1,6 @@
 [submodule "limesurvey"]
 	path = html
 	url = https://github.com/LimeSurvey/LimeSurvey
+[submodule "rpc-client"]
+	path = rpc-client
+	url = https://github.com/weberhofer/jsonrpcphp
