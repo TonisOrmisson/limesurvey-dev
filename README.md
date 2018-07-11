@@ -9,7 +9,7 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 - nginx
 - php 7.0
 - mysql 5.7
-- version tag matches LS version
+- version tag matches LS version. The last bit of the vrersion tag is for this docker versioning
 - nginx does not cache files (css/js development)
 
 The image includes a a mysql server with the user:root password:root.
