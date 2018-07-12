@@ -38,9 +38,10 @@ ADD html/ /var/www/html/
 
 
 # set lime permissions
-RUN cd /var/www/html/ && chmod -R 777 tmp
-RUN cd /var/www/html/ && chmod -R 777 upload
-RUN cd /var/www/html/ && chmod -R 777 tests/tmp
+RUN cd /var/www/html/ && chown -R 1000:www-data tmp
+RUN cd /var/www/html/ && chown -R 1000:www-data upload
+RUN cd /var/www/html/ && chown -R 1000:www-data tests/tmp
+
 
 # install Limesurvey
 RUN cd /var/www/html/ && composer install
