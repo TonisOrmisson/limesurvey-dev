@@ -40,7 +40,6 @@
       <path value="$PROJECT_DIR$/html/third_party/jquery-notify/src" />
       <path value="$PROJECT_DIR$/html/third_party/ace/min" />
       <path value="$PROJECT_DIR$/html/third_party/ace/dev" />
-      <path value="$PROJECT_DIR$/html/third_party/jquery-datatable/DataTables-1.10.12" />
       <path value="$PROJECT_DIR$/html/third_party/leaflet/images" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-superfish/css" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-superfish/images" />
@@ -50,6 +49,9 @@
       <path value="$PROJECT_DIR$/html/third_party/jquery-multiselect/src" />
       <path value="$PROJECT_DIR$/html/third_party/jquery-multiselect/i18n" />
       <path value="$PROJECT_DIR$/html/third_party/devbridge-autocomplete/src" />
+      <path value="$PROJECT_DIR$/html/third_party/datatables/js" />
+      <path value="$PROJECT_DIR$/html/third_party/datatables/css" />
+      <path value="$PROJECT_DIR$/html/third_party/datatables/images" />
     </include_path>
   </component>
 </project>
