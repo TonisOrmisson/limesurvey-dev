@@ -1,14 +1,5 @@
-FROM tonisormisson/dev-lemp
+FROM tonisormisson/dev-lemp:0.3.0
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt update && apt-get install -y --no-install-recommends apt-utils
-RUN apt install -y nginx
-RUN apt install nano
-
-# Install MySQL
-RUN echo mysql-server mysql-server/root_password password root | debconf-set-selections;\
-    echo mysql-server mysql-server/root_password_again password root | debconf-set-selections;\
-    apt-get install -y mysql-server mysql-client libmysqlclient-dev
-
 
 # start mysql
 RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start
@@ -36,6 +27,11 @@ RUN cd /var/www/html/ && composer install
 RUN cd /var/www/html/ && cp application/config/config-sample-mysql.php application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'password' => ''/'password' => 'root'/"  application/config/config.php
 RUN cd /var/www/html/ && sed -i "s/'debug'=>0,/'debug'=>2,'maxLoginAttempt' => 999999999,/"  application/config/config.php
+
+RUN cd /var/www/html/ && chmod -R 775 tmp
+RUN cd /var/www/html/ && chmod -R 775 upload
+RUN cd /var/www/html/ && chmod -R 775 tests/tmp
+
 
 ## enable json RPC
 RUN cd /var/www/html/ && sed -i "/Update default LimeSurvey config here/a \ \ \ \ \ \ \ \ 'RPCInterface' => 'json', " application/config/config.php
