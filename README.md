@@ -35,10 +35,10 @@ $ DOMAIN=localhost phpunit
 
 With the included LS code
 ```
-docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev-xenial
+docker run --name my-lime -p 8080:80 tonisormisson/limesurvey-dev
 ```
 
 use a local LS code
 ```
-docker run --name my-lime --net my-net -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev-xenial
+docker run --name my-lime --net my-net -v /my/local/path:/var/www/html -p 8080:80 tonisormisson/limesurvey-dev
 ```
