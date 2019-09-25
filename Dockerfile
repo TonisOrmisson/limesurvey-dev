@@ -1,4 +1,4 @@
-FROM tonisormisson/dev-lemp:0.3.0
+FROM tonisormisson/dev-lemp:0.6.0
 ENV DEBIAN_FRONTEND noninteractive
 
 # start mysql
