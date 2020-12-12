@@ -5,9 +5,9 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 
 ## Environment
 
-- ubuntu 18.04
+- ubuntu 20.04
 - nginx
-- php 7.2
+- php 7.4
 - mysql 5.7
 - version tag matches LS version. The last bit of the vrersion tag is for this docker versioning
 - nginx does not cache files (css/js development)

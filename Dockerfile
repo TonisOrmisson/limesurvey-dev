@@ -1,4 +1,4 @@
-FROM tonisormisson/dev-lemp:0.6.0
+FROM tonisormisson/dev-lemp:0.7.1
 ENV DEBIAN_FRONTEND noninteractive
 
 # start mysql
@@ -8,7 +8,7 @@ RUN find /var/lib/mysql -type f -exec touch {} \; && service mysql start
 COPY nginx/default /etc/nginx/sites-available/default
 
 # start things
-RUN service php7.2-fpm start
+RUN service php7.4-fpm start
 RUN service nginx restart
 
 ## copy limesurvey
@@ -42,8 +42,12 @@ RUN service mysql start && cd /var/www/html/ && php application/commands/console
 EXPOSE 443
 EXPOSE 80
 EXPOSE 3306
-COPY start.sh start.sh
-RUN chmod a+x start.sh
+COPY start.sh /start.sh
+RUN chmod a+x /start.sh
+RUN ls -lst
+
+## cleanup of files from setup
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www/html
 

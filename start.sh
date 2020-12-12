@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start mysql
-echo "Starting mysql "
+echo "Starting mysql s"
 find /var/lib/mysql -type f -exec touch {} \; && service mysql start
 status=$?
 if [ $status -ne 0 ]; then
@@ -10,8 +10,8 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start PHP-fpm
-echo "Starting PHP-fpm "
-service php7.0-fpm start
+echo "Starting PHP-fpm 7.4 "
+service php7.4-fpm start
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start PHP-fpm: $status"
