@@ -1,17 +1,18 @@
 #!/bin/bash
 
 # Start mysql
-echo "Starting mysql s"
-find /var/lib/mysql -type f -exec touch {} \; && service mysql start
+service mariadb start
+echo "Starting mariadb server"
+service mariadb start
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start mysql: $status"
+  echo "Failed to start mariadb: $status"
   exit $status
 fi
 
 # Start PHP-fpm
-echo "Starting PHP-fpm 7.4 "
-service php7.4-fpm start
+echo "Starting PHP-fpm 8.0 "
+service php8.0-fpm start
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start PHP-fpm: $status"
