@@ -7,7 +7,7 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 
 - ubuntu 22.04
 - nginx
-- php 8.0
+- php 8.2
 - Mariadb
 - version tag matches LS version. The last bit of the version tag is for this docker versioning
 - nginx does not cache files (css/js development)
