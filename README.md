@@ -5,13 +5,14 @@ A docker image build script for a limesurvey DEVELOPMEMT image.
 
 ## Environment
 
-- ubuntu 22.04
+- ubuntu 24.04
 - nginx
-- php 8.2
+- php 8.3
 - Mariadb
 - version tag matches LS version. The last bit of the version tag is for this docker versioning
 - nginx does not cache files (css/js development)
-
+- LimeSurvey Release 6.5.4+240422
+- 
 The image includes a MariaDb server with the user:root password:root.
 And the test-installation of limeSurvey with the user:admin password:password similar to the LimeSurvey original Travis testing set-up.
 
