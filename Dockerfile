@@ -1,4 +1,4 @@
-FROM tonisormisson/dev-lemp:1.2.1
+FROM tonisormisson/dev-lemp:1.2.3
 ENV DEBIAN_FRONTEND noninteractive
 
 ## nginx conf
